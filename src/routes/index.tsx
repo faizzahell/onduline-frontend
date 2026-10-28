@@ -7,6 +7,7 @@ import {
   RequirePermission,
   SuperAdminRoute,
 } from '../components/ProtectedRoute';
+import RequireCompany from '../components/RequireCompany';
 import type { RoleName } from '../features/auth/types/auth.types';
 import UnderMaintenancePage from '../components/ui/UnderMaintenancePage';
 import LoginPage from '../features/auth/pages/LoginPage';
@@ -84,158 +85,172 @@ export function AppRoutes() {
 
       <Route element={<ProtectedRoute />}>
         <Route element={<AppLayout />}>
-          <Route
-            path="/"
-            element={<Navigate to="/invoices/dashboard" replace />}
-          />
-
-          <Route path="/invoices/dashboard" element={<ObmDashboardPage />} />
-          <Route path="/invoices/upload" element={<BatchUploadPage />} />
-          <Route
-            path="/invoices/manual"
-            element={<Navigate to="/invoices/upload" replace />}
-          />
-          <Route path="/invoices" element={<InvoiceListPage />} />
-          <Route path="/invoices/:id/review" element={<InvoiceReviewPage />} />
-          <Route
-            path="/invoices/po-resolution"
-            element={<PoResolutionPage />}
-          />
-
-          <Route
-            element={<RequirePermission permissions={['expense:entry']} />}
-          >
-            <Route path="/expense/entries" element={<ExpenseEntryPage />} />
+          {/* Every page below needs an active company. The guard lets Settings
+              through so a fresh super administrator can create the first
+              company, and redirects there automatically when none exists. */}
+          <Route element={<RequireCompany />}>
             <Route
-              path="/expense/entries/new"
-              element={<ExpenseEntryReviewPage />}
+              path="/"
+              element={<Navigate to="/invoices/dashboard" replace />}
+            />
+
+            <Route path="/invoices/dashboard" element={<ObmDashboardPage />} />
+            <Route path="/invoices/upload" element={<BatchUploadPage />} />
+            <Route
+              path="/invoices/manual"
+              element={<Navigate to="/invoices/upload" replace />}
+            />
+            <Route path="/invoices" element={<InvoiceListPage />} />
+            <Route
+              path="/invoices/:id/review"
+              element={<InvoiceReviewPage />}
             />
             <Route
-              path="/expense/entries/:id"
-              element={<ExpenseEntryReviewPage />}
+              path="/invoices/po-resolution"
+              element={<PoResolutionPage />}
             />
-          </Route>
 
-          <Route
-            element={
-              <RequirePermission
-                permissions={['expense:entry', 'expense:view']}
+            <Route
+              element={<RequirePermission permissions={['expense:entry']} />}
+            >
+              <Route path="/expense/entries" element={<ExpenseEntryPage />} />
+              <Route
+                path="/expense/entries/new"
+                element={<ExpenseEntryReviewPage />}
               />
-            }
-          >
-            <Route path="/expense/claims" element={<MyClaimsPage />} />
-          </Route>
+              <Route
+                path="/expense/entries/:id"
+                element={<ExpenseEntryReviewPage />}
+              />
+            </Route>
 
-          {/* Expense report: non-admins recap their own expenses, admins can
+            <Route
+              element={
+                <RequirePermission
+                  permissions={['expense:entry', 'expense:view']}
+                />
+              }
+            >
+              <Route path="/expense/claims" element={<MyClaimsPage />} />
+            </Route>
+
+            {/* Expense report: non-admins recap their own expenses, admins can
               pick any employee and see company-wide summaries. Both roles
               need access, so the guard allows the entry/view perms too. */}
-          <Route
-            element={
-              <RequirePermission
-                permissions={[
-                  'expense:report',
-                  'expense:view_all',
-                  'expense:view',
-                  'expense:entry',
-                ]}
-              />
-            }
-          >
-            <Route path="/expense/reports" element={<ExpenseReportPage />} />
-          </Route>
-
-          {/* Claim detail is reachable both by a submitter (view) and by an
-              approver acting on the claim, so it allows either permission. */}
-          <Route
-            element={
-              <RequirePermission
-                permissions={[
-                  'expense:view',
-                  'expense:view_all',
-                  'expense:approve',
-                  'expense:accrue',
-                  'expense:post',
-                ]}
-              />
-            }
-          >
-            <Route path="/expense/claims/:id" element={<ClaimDetailPage />} />
-          </Route>
-
-          <Route
-            element={
-              <RequirePermission
-                permissions={[
-                  'expense:approve',
-                  'expense:accrue',
-                  'expense:post',
-                ]}
-              />
-            }
-          >
-            <Route path="/expense/approvals" element={<ApprovalInboxPage />} />
-          </Route>
-
-          <Route
-            element={
-              <RequirePermission
-                permissions={[
-                  'pettycash:entry',
-                  'pettycash:approve',
-                  'pettycash:post',
-                  'expense:view_all',
-                ]}
-              />
-            }
-          >
-            <Route path="/expense/petty-cash" element={<PettyCashListPage />} />
             <Route
-              path="/expense/petty-cash/:id"
-              element={<PettyCashDetailPage />}
-            />
-          </Route>
-
-          <Route path="/settings" element={<SettingsLayout />}>
-            <Route index element={<Navigate to="users" replace />} />
-            <Route path="users" element={<UserManagementPage />} />
-
-            <Route element={<SuperAdminRoute />}>
-              <Route path="ocr-access" element={<OcrAccessPage />} />
-              <Route path="companies" element={<CompanyManagementPage />} />
-              <Route path="database" element={<DatabaseToolsPage />} />
+              element={
+                <RequirePermission
+                  permissions={[
+                    'expense:report',
+                    'expense:view_all',
+                    'expense:view',
+                    'expense:entry',
+                  ]}
+                />
+              }
+            >
+              <Route path="/expense/reports" element={<ExpenseReportPage />} />
             </Route>
-          </Route>
 
-          {PLANNED_MODULES.map((module) => {
-            const page = (
-              <UnderMaintenancePage
-                title={module.title}
-                description={module.description}
+            {/* Claim detail is reachable both by a submitter (view) and by an
+              approver acting on the claim, so it allows either permission. */}
+            <Route
+              element={
+                <RequirePermission
+                  permissions={[
+                    'expense:view',
+                    'expense:view_all',
+                    'expense:approve',
+                    'expense:accrue',
+                    'expense:post',
+                  ]}
+                />
+              }
+            >
+              <Route path="/expense/claims/:id" element={<ClaimDetailPage />} />
+            </Route>
+
+            <Route
+              element={
+                <RequirePermission
+                  permissions={[
+                    'expense:approve',
+                    'expense:accrue',
+                    'expense:post',
+                  ]}
+                />
+              }
+            >
+              <Route
+                path="/expense/approvals"
+                element={<ApprovalInboxPage />}
               />
-            );
+            </Route>
 
-            // Modules with an access rule sit behind the guard, so an
-            // employee cannot reach e.g. the petty-cash placeholder by URL.
-            if (module.roles || module.permissions) {
-              return (
-                <Route
-                  key={module.path}
-                  element={
-                    <RequirePermission
-                      roles={module.roles}
-                      permissions={module.permissions}
-                    />
-                  }
-                >
-                  <Route path={module.path} element={page} />
-                </Route>
+            <Route
+              element={
+                <RequirePermission
+                  permissions={[
+                    'pettycash:entry',
+                    'pettycash:approve',
+                    'pettycash:post',
+                    'expense:view_all',
+                  ]}
+                />
+              }
+            >
+              <Route
+                path="/expense/petty-cash"
+                element={<PettyCashListPage />}
+              />
+              <Route
+                path="/expense/petty-cash/:id"
+                element={<PettyCashDetailPage />}
+              />
+            </Route>
+
+            <Route path="/settings" element={<SettingsLayout />}>
+              <Route index element={<Navigate to="users" replace />} />
+              <Route path="users" element={<UserManagementPage />} />
+
+              <Route element={<SuperAdminRoute />}>
+                <Route path="ocr-access" element={<OcrAccessPage />} />
+                <Route path="companies" element={<CompanyManagementPage />} />
+                <Route path="database" element={<DatabaseToolsPage />} />
+              </Route>
+            </Route>
+
+            {PLANNED_MODULES.map((module) => {
+              const page = (
+                <UnderMaintenancePage
+                  title={module.title}
+                  description={module.description}
+                />
               );
-            }
 
-            return (
-              <Route key={module.path} path={module.path} element={page} />
-            );
-          })}
+              // Modules with an access rule sit behind the guard, so an
+              // employee cannot reach e.g. the petty-cash placeholder by URL.
+              if (module.roles || module.permissions) {
+                return (
+                  <Route
+                    key={module.path}
+                    element={
+                      <RequirePermission
+                        roles={module.roles}
+                        permissions={module.permissions}
+                      />
+                    }
+                  >
+                    <Route path={module.path} element={page} />
+                  </Route>
+                );
+              }
+
+              return (
+                <Route key={module.path} path={module.path} element={page} />
+              );
+            })}
+          </Route>
         </Route>
       </Route>
 
