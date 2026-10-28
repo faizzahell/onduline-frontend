@@ -1,0 +1,34 @@
+{
+  "title": "User Management",
+  "subtitle": "Manage user details, account status, and role assignments (RBAC) for the OFDA platform.",
+  "addUser": "Add New User",
+  "searchPlaceholder": "Search user name or email...",
+  "table": {
+    "user": "User",
+    "roles": "Roles",
+    "company": "Company",
+    "status": "Account Status",
+    "createdAt": "Registered",
+    "actions": "Actions"
+  },
+  "status": {
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "modal": {
+    "createTitle": "Add New User",
+    "editTitle": "Edit User Details",
+    "nameLabel": "Full Name",
+    "emailLabel": "Official Onduline Email",
+    "passwordLabel": "Password",
+    "passwordHint": "Leave blank if you do not wish to change the password",
+    "rolesLabel": "Assign Roles",
+    "companyLabel": "Company",
+    "companyPlaceholder": "Select a company...",
+    "companyPinned": "This user will be created under {{company}}.",
+    "cancel": "Cancel",
+    "save": "Save Changes",
+    "create": "Create User"
+  },
+  "confirmDelete": "Are you sure you want to delete this user?"
+}

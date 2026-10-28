@@ -1,0 +1,34 @@
+{
+  "title": "Manajemen Pengguna",
+  "subtitle": "Kelola data pengguna, status akun, dan alokasi peran (RBAC) pada platform OFDA.",
+  "addUser": "Tambah Pengguna Baru",
+  "searchPlaceholder": "Cari nama atau email pengguna...",
+  "table": {
+    "user": "Pengguna",
+    "roles": "Peran (Roles)",
+    "company": "Perusahaan",
+    "status": "Status Akun",
+    "createdAt": "Terdaftar",
+    "actions": "Aksi"
+  },
+  "status": {
+    "active": "Aktif",
+    "inactive": "Nonaktif"
+  },
+  "modal": {
+    "createTitle": "Tambah Pengguna Baru",
+    "editTitle": "Edit Data Pengguna",
+    "nameLabel": "Nama Lengkap",
+    "emailLabel": "Email Resmi Onduline",
+    "passwordLabel": "Kata Sandi",
+    "passwordHint": "Kosongkan jika tidak ingin mengubah kata sandi",
+    "rolesLabel": "Pilih Peran (Roles)",
+    "companyLabel": "Perusahaan",
+    "companyPlaceholder": "Pilih perusahaan...",
+    "companyPinned": "Pengguna ini akan dibuat pada {{company}}.",
+    "cancel": "Batal",
+    "save": "Simpan",
+    "create": "Buat Pengguna"
+  },
+  "confirmDelete": "Apakah Anda yakin ingin menghapus pengguna ini?"
+}

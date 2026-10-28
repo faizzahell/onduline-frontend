@@ -1,0 +1,246 @@
+{
+  "dashboard": {
+    "title": "Operasi Accounts Payable",
+    "subtitle": "Mesin ekstraksi OCR & 3-way matching real-time terintegrasi dengan Dynamics 365 Business Central.",
+    "syncBc": "Sinkronkan Business Central",
+    "uploadInvoice": "Unggah Invoice",
+    "stats": {
+      "autoMatchRate": "Rasio Match Otomatis",
+      "target": "Target {{percent}}%",
+      "automatedSummary": "{{matched}} dari {{total}} invoice terotomasi",
+      "pendingPo": "Pending Resolusi PO",
+      "pendingPoSub": "Membutuhkan resolusi PO",
+      "varianceExceptions": "Pengecualian Selisih",
+      "varianceSub": "Selisih harga/qty melebihi 2%",
+      "postedToBc": "Terposting ke BC",
+      "postedSub": "{{count}} invoice terposting ke BC"
+    },
+    "tabs": {
+      "all": "Semua Invoice ({{count}})",
+      "ready": "Matched & Ready ({{count}})",
+      "poNeeded": "Perlu Resolusi PO ({{count}})",
+      "posted": "Posted to BC ({{count}})"
+    },
+    "searchPlaceholder": "Cari no. invoice, vendor, atau no. PO...",
+    "table": {
+      "invoiceNo": "NO. INVOICE",
+      "vendor": "VENDOR (BC REF)",
+      "scannedDate": "TANGGAL SCAN",
+      "totalAmount": "TOTAL TAGIHAN",
+      "poNumber": "DETECTED PO #",
+      "status": "STATUS MATCHING",
+      "action": "AKSI",
+      "empty": "Tidak ada transaksi invoice ditemukan.",
+      "processing": "Memproses OCR...",
+      "exploringVendor": "Mengekstrak Vendor...",
+      "missingPo": "MISSING PO",
+      "loading": "Memuat transaksi invoice..."
+    },
+    "statusBadge": {
+      "posted": "Posted BC",
+      "matched": "Matched 100%",
+      "poMissing": "PO Missing - Needs Lookup",
+      "validating": "Ekstraksi / Validasi"
+    },
+    "actions": {
+      "resolvePo": "Resolve PO",
+      "verifyAndMatch": "Verify & Match"
+    }
+  },
+  "upload": {
+    "title": "Upload Batch Purchase Invoice (OBM)",
+    "subtitle": "Unggah multi-file invoice vendor (PDF, JPG, PNG). Sistem OCR AI akan mengekstrak informasi transaksi dan mencocokkannya dengan Business Central secara otomatis.",
+    "dropzonePrompt": "Tarik & Lepas File Invoice di Sini, atau",
+    "browseFiles": "Telusuri File",
+    "supportedFormats": "Mendukung format PDF, PNG, dan JPEG hingga 10MB per file.",
+    "queueTitle": "Antrean Berkas Invoice ({{count}} File)",
+    "clearAll": "Bersihkan Semua",
+    "processBatchBtn": "Proses Batch OCR",
+    "viewInvoicesBtn": "Lihat Daftar Invoice",
+    "status": {
+      "ready": "Siap Upload",
+      "uploading": "Mengunggah...",
+      "sentToQueue": "Terkirim ke Queue",
+      "failed": "Gagal"
+    }
+  },
+  "jobs": {
+    "panelTitle": "Pemrosesan OCR Live",
+    "panelSubtitle": "Monitoring status job & hasil ekstraksi BullMQ",
+    "activeCount": "{{count}} Job Aktif",
+    "emptyStateTitle": "Belum Ada Pemrosesan OCR",
+    "emptyStateSub": "Klik tombol \"Proses Batch OCR\" di sebelah kiri untuk melihat status ekstraksi AI secara real-time.",
+    "invoiceId": "Invoice ID",
+    "connecting": "Menghubungkan ke OCR Worker...",
+    "engine": "Engine",
+    "confidence": "Confidence",
+    "previewJson": "Preview Ekstraksi Hasil JSON",
+    "noTextDetected": "Tidak ada teks terdeteksi",
+    "status": {
+      "completed": "COMPLETED",
+      "processing": "PROCESSING",
+      "failed": "FAILED",
+      "pending": "QUEUED / PENDING"
+    },
+    "poResolution": {
+      "title": "Purchase Order Resolution Lookup",
+      "subtitle": "Pemasok tidak mencantumkan nomor PO pada dokumen. Pilih Open PO Business Central yang sesuai untuk melanjutkan 3-Way Matching.",
+      "bindAndMatchBtn": "Hubungkan PO & Lanjutkan Match",
+      "unlinkedDocLabel": "Dokumen Tanpa PO",
+      "vendorLabel": "Vendor",
+      "totalBillLabel": "Total Tagihan",
+      "selectOtherDoc": "Pilih Dokumen Lain",
+      "noNumber": "Tanpa No",
+      "emptyMissingTitle": "Tidak ada invoice yang membutuhkan resolusi PO.",
+      "emptyMissingSub": "Seluruh invoice telah terhubung dengan Purchase Order Business Central.",
+      "tableTitle": "Daftar Open PO Vendor di Business Central",
+      "searchPlaceholder": "Cari No. PO, pembeli, atau status...",
+      "aiRecommendation": "Rekomendasi AI ({{percent}}% Match)",
+      "lines": "Item",
+      "tableEmpty": "Tidak ada Open PO ditemukan untuk vendor ini.",
+      "tableCol": {
+        "select": "Pilih",
+        "poNumber": "No. PO BC",
+        "orderDate": "Tanggal Order",
+        "purchaser": "Pembeli / Purchaser",
+        "linesCount": "Item Baris",
+        "totalAmount": "Total Nilai PO",
+        "grnStatus": "Status GRN",
+        "status": "Status BC",
+        "action": "Aksi"
+      },
+      "grnStatus": {
+        "fullyReceived": "GRN Lengkap",
+        "partiallyReceived": "GRN Parsial",
+        "notReceived": "Belum GRN"
+      },
+      "selectInvoicePlaceholder": "Pilih Dokumen Invoice...",
+      "actions": {
+        "view": "Detail",
+        "viewDetail": "Lihat Detail Data PO"
+      },
+      "modal": {
+        "title": "Rincian Purchase Order Business Central",
+        "orderDate": "Tanggal Order",
+        "purchaser": "Pembeli / Buyer",
+        "grnStatus": "Status Penerimaan",
+        "totalAmount": "Total Nilai PO",
+        "linesTitle": "Rincian Item Barang / Jasa (PO Lines)",
+        "noLines": "Tidak ada rincian baris item untuk PO ini.",
+        "selectAndBindBtn": "Pilih & Hubungkan PO Ini"
+      }
+    }
+  },
+  "list": {
+    "title": "Verifikasi Invoice Building Material (OBM)",
+    "subtitle": "Pantau status ekstraksi OCR, 3-way matching PO/GRN, dan posting dokumen ke Microsoft Dynamics 365 Business Central.",
+    "uploadBtn": "Upload Invoice Baru",
+    "searchPlaceholder": "Cari no invoice, vendor, atau no. PO...",
+    "loading": "Memuat berkas invoice...",
+    "tableEmpty": "Belum ada invoice yang ditemukan.",
+    "processingNo": "Belum Terbaca",
+    "exploringVendor": "Eksplorasi Vendor...",
+    "itemsLabel": "Items",
+    "missingPo": "Perlu PO",
+    "tableCol": {
+      "invoiceNo": "No. Invoice",
+      "vendor": "Vendor / Supplier",
+      "scannedDate": "Tanggal Pindai",
+      "linesCount": "Item Baris",
+      "poNumber": "No. PO BC",
+      "totalAmount": "Total Tagihan",
+      "status": "Status Alur",
+      "action": "Aksi"
+    },
+    "status": {
+      "ocrProcessing": "Ekstraksi OCR",
+      "needsReview": "Perlu Review",
+      "matched": "3-Way Matched",
+      "postedBc": "Posted BC",
+      "failed": "Gagal OCR"
+    },
+    "actions": {
+      "review": "Review & Matching",
+      "reviewBtn": "Review",
+      "delete": "Hapus Invoice"
+    },
+    "deleteModal": {
+      "title": "Konfirmasi Hapus Invoice",
+      "message": "Apakah Anda yakin ingin menghapus berkas invoice berikut? Tindakan ini akan menghapus data dari database serta berkas fisik terkait secara permanen."
+    }
+  },
+  "review": {
+    "title": "Review Invoice",
+    "noNumber": "Tanpa Nomor",
+    "vendorLabel": "Vendor",
+    "poRefLabel": "PO Ref",
+    "unlinkedPo": "Belum Terhubung",
+    "validatedBy": "Diverifikasi Oleh",
+    "submitBcBtn": "Submit to Business Central",
+    "submitDisabledTooltip": "Perlu status MATCHED terlebih dahulu",
+    "loading": "Memuat data verifikasi invoice...",
+    "notFound": "Invoice tidak ditemukan atau terjadi kesalahan.",
+    "viewerOriginal": "Asli",
+    "viewerResult": "Result",
+    "noDocumentFile": "Dokumen fisik tidak dapat ditemukan",
+    "emptyLinesPreview": "Pratinjau Baris Item Kosong",
+    "linesTitle": "Rincian Baris Item (Invoice Lines)",
+    "addItemBtn": "Tambah Item",
+    "summaryTitle": "Ringkasan Nilai Transaksi",
+    "currencyLabel": "Mata Uang",
+    "itemNamePlaceholder": "Nama barang / jasa",
+    "updateInvoiceBtn": "Simpan Perubahan Invoice",
+    "validateExtractionBtn": "Validasi Data Ekstraksi",
+    "validateMatchBtn": "Konfirmasi 3-Way Match",
+    "validatedByLabel": "Validator Ekstraksi OCR",
+    "validatedAtLabel": "Waktu Validasi",
+    "notValidatedYet": "Belum Diverifikasi",
+    "matchTitle": "Hasil Rekonsiliasi Automatic 3-Way Match",
+    "matchSubtitle": "Dokumen Invoice, Purchase Order ({{po}}), dan GRN telah cocok sempurna.",
+    "glTitle": "Alokasi Akun G/L & Cost Center Business Central",
+    "glSubtitle": "Tetapkan nomor akun G/L utama serta dimensi departemen pembebanan biaya sebelum dokumen dikirim ke Business Central.",
+    "glAccountLabel": "Akun G/L Utama",
+    "costCenterLabel": "Dimensi Departemen / Cost Center",
+    "tabs": {
+      "extraction": "Hasil Ekstraksi OCR",
+      "match": "Pencocokan 3-Way Match",
+      "gl": "Alokasi G/L & Dimensi"
+    },
+    "form": {
+      "vendorName": "Nama Vendor / Supplier",
+      "vendorTaxId": "NPWP / Vendor Tax ID",
+      "invoiceNumber": "Nomor Invoice Vendor",
+      "poNumber": "Nomor PO SAP / BC",
+      "invoiceDate": "Tanggal Invoice",
+      "dueDate": "Tanggal Jatuh Tempo",
+      "subtotal": "Subtotal (DPP)",
+      "taxAmount": "PPN / Pajak",
+      "totalAmount": "Total Akhir"
+    },
+    "tableCol": {
+      "description": "Deskripsi Item",
+      "qty": "Qty",
+      "unit": "Satuan",
+      "unitPrice": "Harga Unit",
+      "lineTotal": "Total Line",
+      "delete": "Hapus",
+      "invQty": "INV QTY",
+      "poQty": "PO QTY",
+      "grnQty": "GRN QTY",
+      "totalAmount": "TOTAL HARGA"
+    },
+    "modals": {
+      "updateTitle": "Konfirmasi Simpan Perubahan",
+      "updateMessage": "Apakah Anda yakin ingin menyimpan seluruh perubahan data header dan rincian baris item invoice ke database?",
+      "confirmSave": "Ya, Simpan",
+      "validateTitle": "Konfirmasi Validasi Ekstraksi",
+      "validateMessage": "Tindakan ini akan mengubah status invoice menjadi VALIDATED dan mencatat nama Anda sebagai validator data ekstraksi ini.",
+      "confirmValidate": "Ya, Validasi",
+      "matchTitle": "Konfirmasi 3-Way Match",
+      "matchMessage": "Tindakan ini akan mengonfirmasi pencocokan 3-Way Match dan mengubah status invoice menjadi MATCHED, sehingga dokumen siap di-submit ke Business Central.",
+      "confirmMatch": "Ya, Konfirmasi Match"
+    },
+    "lockExtractionTooltip": "Validasi ekstraksi terlebih dahulu untuk membuka langkah ini",
+    "lockMatchTooltip": "Konfirmasi 3-Way match terlebih dahulu untuk membuka langkah ini"
+  }
+}

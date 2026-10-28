@@ -1,0 +1,246 @@
+{
+  "dashboard": {
+    "title": "Accounts Payable Operations",
+    "subtitle": "Real-time OCR extraction & 3-way matching engine synced with Dynamics 365 Business Central.",
+    "syncBc": "Sync Business Central",
+    "uploadInvoice": "Upload Invoice",
+    "stats": {
+      "autoMatchRate": "Auto-match rate",
+      "target": "Target {{percent}}%",
+      "automatedSummary": "{{matched}} of {{total}} invoices automated",
+      "pendingPo": "Pending PO linking",
+      "pendingPoSub": "Requires PO Resolution",
+      "varianceExceptions": "Variance exceptions",
+      "varianceSub": "Price/Qty threshold exceeded > 2%",
+      "postedToBc": "Posted to BC",
+      "postedSub": "{{count}} invoices posted to BC"
+    },
+    "tabs": {
+      "all": "All Invoices ({{count}})",
+      "ready": "Matched & Ready ({{count}})",
+      "poNeeded": "PO Resolution Needed ({{count}})",
+      "posted": "Posted to BC ({{count}})"
+    },
+    "searchPlaceholder": "Filter Invoice No, Vendor, or PO...",
+    "table": {
+      "invoiceNo": "INVOICE NO.",
+      "vendor": "VENDOR (BC REF)",
+      "scannedDate": "SCANNED DATE",
+      "totalAmount": "INVOICE AMOUNT",
+      "poNumber": "DETECTED PO #",
+      "status": "3-WAY MATCH STATUS",
+      "action": "QUICK ACTIONS",
+      "empty": "No invoice transactions found.",
+      "processing": "Processing OCR...",
+      "exploringVendor": "Extracting Vendor...",
+      "missingPo": "MISSING PO",
+      "loading": "Loading invoice transactions..."
+    },
+    "statusBadge": {
+      "posted": "Posted BC",
+      "matched": "Matched 100%",
+      "poMissing": "PO Missing - Needs Lookup",
+      "validating": "Validating Lines"
+    },
+    "actions": {
+      "resolvePo": "Resolve PO",
+      "verifyAndMatch": "Verify & Match"
+    }
+  },
+  "upload": {
+    "title": "Upload Batch Purchase Invoice (OBM)",
+    "subtitle": "Upload multi-file vendor invoices (PDF, JPG, PNG). The AI OCR system will extract transaction details and match them with Business Central automatically.",
+    "dropzonePrompt": "Drag & Drop Invoice Files Here, or",
+    "browseFiles": "Browse Files",
+    "supportedFormats": "Supports PDF, PNG, and JPEG formats up to 10MB per file.",
+    "queueTitle": "Invoice File Queue ({{count}} Files)",
+    "clearAll": "Clear All",
+    "processBatchBtn": "Process Batch OCR",
+    "viewInvoicesBtn": "View Invoice List",
+    "status": {
+      "ready": "Ready to Upload",
+      "uploading": "Uploading...",
+      "sentToQueue": "Sent to Queue",
+      "failed": "Failed"
+    }
+  },
+  "jobs": {
+    "panelTitle": "Live OCR Processing",
+    "panelSubtitle": "BullMQ job status & extraction result monitoring",
+    "activeCount": "{{count}} Active Jobs",
+    "emptyStateTitle": "No OCR Processing Yet",
+    "emptyStateSub": "Click the \"Process Batch OCR\" button on the left to view real-time AI extraction status.",
+    "invoiceId": "Invoice ID",
+    "connecting": "Connecting to OCR Worker...",
+    "engine": "Engine",
+    "confidence": "Confidence",
+    "previewJson": "Preview JSON Extraction Result",
+    "noTextDetected": "No text detected",
+    "status": {
+      "completed": "COMPLETED",
+      "processing": "PROCESSING",
+      "failed": "FAILED",
+      "pending": "QUEUED / PENDING"
+    }
+  },
+  "poResolution": {
+    "title": "Purchase Order Resolution Lookup",
+    "subtitle": "The vendor did not specify a PO number on the document. Select the appropriate Business Central Open PO to proceed with 3-Way Matching.",
+    "bindAndMatchBtn": "Bind PO & Continue Match",
+    "unlinkedDocLabel": "Document Without PO",
+    "vendorLabel": "Vendor",
+    "totalBillLabel": "Total Amount",
+    "selectOtherDoc": "Select Other Document",
+    "noNumber": "No Number",
+    "emptyMissingTitle": "No invoices require PO resolution.",
+    "emptyMissingSub": "All invoices are linked to Business Central Purchase Orders.",
+    "tableTitle": "Vendor Open PO List in Business Central",
+    "searchPlaceholder": "Search PO No., purchaser, or status...",
+    "aiRecommendation": "AI Recommendation ({{percent}}% Match)",
+    "lines": "Items",
+    "tableEmpty": "No Open PO found for this vendor.",
+    "tableCol": {
+      "select": "Select",
+      "poNumber": "BC PO No.",
+      "orderDate": "Order Date",
+      "purchaser": "Purchaser / Buyer",
+      "linesCount": "Line Items",
+      "totalAmount": "Total PO Amount",
+      "grnStatus": "GRN Status",
+      "status": "BC Status",
+      "action": "Action"
+    },
+    "grnStatus": {
+      "fullyReceived": "Fully Received",
+      "partiallyReceived": "Partially Received",
+      "notReceived": "Not Received"
+    },
+    "selectInvoicePlaceholder": "Select Invoice Document...",
+    "actions": {
+      "view": "Detail",
+      "viewDetail": "View PO Details"
+    },
+    "modal": {
+      "title": "Business Central Purchase Order Details",
+      "orderDate": "Order Date",
+      "purchaser": "Purchaser / Buyer",
+      "grnStatus": "Receipt Status",
+      "totalAmount": "Total PO Amount",
+      "linesTitle": "Item / Service Line Details (PO Lines)",
+      "noLines": "No item line details found for this PO.",
+      "selectAndBindBtn": "Select & Bind This PO"
+    }
+  },
+  "list": {
+    "title": "Building Material Invoice Verification (OBM)",
+    "subtitle": "Monitor OCR extraction status, 3-way PO/GRN matching, and document posting to Microsoft Dynamics 365 Business Central.",
+    "uploadBtn": "Upload New Invoice",
+    "searchPlaceholder": "Search invoice no., vendor, or PO no....",
+    "loading": "Loading invoice files...",
+    "tableEmpty": "No invoices found.",
+    "processingNo": "Not Extracted",
+    "exploringVendor": "Exploring Vendor...",
+    "itemsLabel": "Items",
+    "missingPo": "PO Required",
+    "tableCol": {
+      "invoiceNo": "Invoice No.",
+      "vendor": "Vendor / Supplier",
+      "scannedDate": "Scanned Date",
+      "linesCount": "Line Items",
+      "poNumber": "BC PO No.",
+      "totalAmount": "Total Amount",
+      "status": "Workflow Status",
+      "action": "Action"
+    },
+    "status": {
+      "ocrProcessing": "OCR Processing",
+      "needsReview": "Needs Review",
+      "matched": "3-Way Matched",
+      "postedBc": "Posted BC",
+      "failed": "OCR Failed"
+    },
+    "actions": {
+      "review": "Review & Matching",
+      "reviewBtn": "Review",
+      "delete": "Delete Invoice"
+    },
+    "deleteModal": {
+      "title": "Confirm Delete Invoice",
+      "message": "Are you sure you want to delete the following invoice? This action will permanently remove data from the database and associated physical files."
+    }
+  },
+  "review": {
+    "title": "Review Invoice",
+    "noNumber": "No Number",
+    "vendorLabel": "Vendor",
+    "poRefLabel": "PO Ref",
+    "unlinkedPo": "Unlinked PO",
+    "validatedBy": "Validated By",
+    "submitBcBtn": "Submit to Business Central",
+    "submitDisabledTooltip": "Requires MATCHED status first",
+    "loading": "Loading invoice verification data...",
+    "notFound": "Invoice not found or an error occurred.",
+    "viewerOriginal": "Original",
+    "viewerResult": "Result",
+    "noDocumentFile": "Physical document not found",
+    "emptyLinesPreview": "Item Lines Preview Empty",
+    "linesTitle": "Item Line Details (Invoice Lines)",
+    "addItemBtn": "Add Item",
+    "summaryTitle": "Transaction Summary",
+    "currencyLabel": "Currency",
+    "itemNamePlaceholder": "Item / service name",
+    "updateInvoiceBtn": "Save Invoice Changes",
+    "validateExtractionBtn": "Validate Extraction Data",
+    "validateMatchBtn": "Confirm 3-Way Match",
+    "validatedByLabel": "OCR Extraction Validator",
+    "validatedAtLabel": "Validation Time",
+    "notValidatedYet": "Not Validated Yet",
+    "matchTitle": "Automatic 3-Way Match Reconciliation Result",
+    "matchSubtitle": "Invoice, Purchase Order ({{po}}), and GRN documents match perfectly.",
+    "glTitle": "Business Central G/L Account & Cost Center Allocation",
+    "glSubtitle": "Assign main G/L account and cost center dimensions before submitting to Business Central.",
+    "glAccountLabel": "Main G/L Account",
+    "costCenterLabel": "Department / Cost Center Dimension",
+    "tabs": {
+      "extraction": "OCR Extraction Results",
+      "match": "3-Way Match Reconciliation",
+      "gl": "G/L & Dimension Allocation"
+    },
+    "form": {
+      "vendorName": "Vendor / Supplier Name",
+      "vendorTaxId": "NPWP / Vendor Tax ID",
+      "invoiceNumber": "Vendor Invoice Number",
+      "poNumber": "SAP / BC PO Number",
+      "invoiceDate": "Invoice Date",
+      "dueDate": "Due Date",
+      "subtotal": "Subtotal (Net)",
+      "taxAmount": "VAT / Tax Amount",
+      "totalAmount": "Grand Total"
+    },
+    "tableCol": {
+      "description": "Item Description",
+      "qty": "Qty",
+      "unit": "Unit",
+      "unitPrice": "Unit Price",
+      "lineTotal": "Line Total",
+      "delete": "Delete",
+      "invQty": "INV QTY",
+      "poQty": "PO QTY",
+      "grnQty": "GRN QTY",
+      "totalAmount": "TOTAL AMOUNT"
+    },
+    "modals": {
+      "updateTitle": "Confirm Save Changes",
+      "updateMessage": "Are you sure you want to save all header and line item changes to the database?",
+      "confirmSave": "Yes, Save",
+      "validateTitle": "Confirm Extraction Validation",
+      "validateMessage": "This action will update the invoice status to VALIDATED and record your name as the extraction validator.",
+      "confirmValidate": "Yes, Validate",
+      "matchTitle": "Confirm 3-Way Match",
+      "matchMessage": "This action will confirm 3-Way Matching and update the invoice status to MATCHED, making it ready to submit to Business Central.",
+      "confirmMatch": "Yes, Confirm Match"
+    },
+    "lockExtractionTooltip": "Validate extraction first to unlock this step",
+    "lockMatchTooltip": "Confirm 3-Way match first to unlock this step"
+  }
+}
